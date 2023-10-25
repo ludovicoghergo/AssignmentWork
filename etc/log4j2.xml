@@ -1,0 +1,12 @@
+<Configuration status="INFO" name="MyApp">
+    <Appenders>
+        <File name="File" fileName="logs/myapp-${date:yyyy-MM-dd_HH_mm}">
+            <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>

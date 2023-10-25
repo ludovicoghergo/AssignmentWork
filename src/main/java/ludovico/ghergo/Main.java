@@ -16,13 +16,11 @@ public class Main {
 
     public static void main(String[] args)
     {
-        if (args.length ==  0)
+        if (args == null || args.length ==  0)
         {
             System.out.println("F:0,H:0,D:0,T:0,X:0");
             return;
         }
-
-
 
         try
         {
@@ -34,7 +32,7 @@ public class Main {
         }
         catch (InvalidParamException e)
         {
-            System.out.println("Some errors has happened during parameters initialization.");
+            System.err.println("Some errors has happened during parameters initialization.");
             return;
         }
 
@@ -97,7 +95,7 @@ public class Main {
                 .map(shortCode -> PatientState.getStateByShortCode(shortCode))
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        if(patientStates.contains(Medicine.UNKNOWN))
+        if(patientStates.contains(PatientState.UNKNOWN))
         {
             throw new InvalidParamException("Invalid Param: must be a patient's state token or medicine's.");
         }

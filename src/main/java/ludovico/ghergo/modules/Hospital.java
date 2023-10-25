@@ -5,14 +5,19 @@ import ludovico.ghergo.common.patients.PhysicalPatient;
 import ludovico.ghergo.common.drugs.Medicine;
 import ludovico.ghergo.enums.PatientState;
 
+import ludovico.ghergo.utils.HospitalUtility;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.HashMap;
+
 
 import static ludovico.ghergo.utils.HospitalUtility.initPatientByStates;
 
 public class Hospital
 {
+    private static final Logger LOGGER = LogManager.getLogger(Hospital.class);
     private ArrayList<PhysicalPatient> patients;
     private ArrayList<Medicine> medicines;
     private EnumMap<PatientState,Integer> output;
@@ -31,13 +36,16 @@ public class Hospital
         {
             for(Medicine med: medicines)
             {
-                pat.setState(med.apply(pat));
-                pat.addDrugInHistory(med);
+                pat.takeDrug(med);
             }
         }
 
         for(Patient pat: patients)
         {
+            if(pat.getState() == PatientState.DEAD && HospitalUtility.isFlyingSpaghettiMonsterAppeared())
+            {
+                pat.setState(PatientState.HEALTHY);
+            }
             output.putIfAbsent(pat.getState(), 0);
             output.computeIfPresent(pat.getState(),(key,val) -> val+1);
         }

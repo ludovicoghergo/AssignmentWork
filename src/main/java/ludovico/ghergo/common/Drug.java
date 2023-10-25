@@ -8,4 +8,5 @@ public interface Drug
     {
         return PatientState.DEAD;
     };
+    
 }
