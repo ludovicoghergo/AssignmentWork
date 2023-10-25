@@ -1,12 +1,7 @@
 import ludovico.ghergo.Main;
-import ludovico.ghergo.common.Patient;
-import ludovico.ghergo.common.drugs.Medicine;
-import ludovico.ghergo.common.patients.PhysicalPatient;
-import ludovico.ghergo.enums.PatientState;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

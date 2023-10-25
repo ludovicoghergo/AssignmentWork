@@ -1,26 +1,22 @@
 package ludovico.ghergo.modules;
 
 import ludovico.ghergo.common.Patient;
-import ludovico.ghergo.common.patients.PhysicalPatient;
 import ludovico.ghergo.common.drugs.Medicine;
+import ludovico.ghergo.common.patients.PhysicalPatient;
 import ludovico.ghergo.enums.PatientState;
-
 import ludovico.ghergo.utils.HospitalUtility;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import java.util.ArrayList;
 import java.util.EnumMap;
-
 
 import static ludovico.ghergo.utils.HospitalUtility.initPatientByStates;
 
 public class Hospital
 {
-    private static final Logger LOGGER = LogManager.getLogger(Hospital.class);
-    private ArrayList<PhysicalPatient> patients;
-    private ArrayList<Medicine> medicines;
-    private EnumMap<PatientState,Integer> output;
+    private final ArrayList<PhysicalPatient> patients;
+    private final ArrayList<Medicine> medicines;
+    private final EnumMap<PatientState,Integer> output;
 
 
     public Hospital(ArrayList<PatientState> _patients, ArrayList<Medicine> _medicines)

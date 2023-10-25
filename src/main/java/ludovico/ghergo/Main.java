@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static int NUM_PARAMS = 2;
     static ArrayList<PatientState> patientStates = new ArrayList<>();
     static ArrayList<Medicine> medicines = new ArrayList<>();
 
@@ -73,7 +72,7 @@ public class Main {
             throw new InvalidParamException("You can't declare patients more than once.");
         }
          medicines = Arrays.stream(medicineString)
-                .map(shortCode -> Medicine.getMedicineByShortCode(shortCode))
+                .map(Medicine::getMedicineByShortCode)
                 .collect(Collectors.toCollection(ArrayList::new));
 
         if(medicines.contains(Medicine.UNKNOWN))
@@ -92,7 +91,7 @@ public class Main {
         }
 
         patientStates = Arrays.stream(patientString)
-                .map(shortCode -> PatientState.getStateByShortCode(shortCode))
+                .map(PatientState::getStateByShortCode)
                 .collect(Collectors.toCollection(ArrayList::new));
 
         if(patientStates.contains(PatientState.UNKNOWN))

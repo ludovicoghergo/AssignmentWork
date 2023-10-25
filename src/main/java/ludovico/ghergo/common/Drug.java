@@ -4,9 +4,9 @@ import ludovico.ghergo.enums.PatientState;
 
 public interface Drug
 {
-    default public PatientState apply(Patient _patient)
+    default  PatientState apply(Patient _patient)
     {
         return PatientState.DEAD;
-    };
-    
+    }
+
 }

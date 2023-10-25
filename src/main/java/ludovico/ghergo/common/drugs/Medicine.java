@@ -3,9 +3,7 @@ package ludovico.ghergo.common.drugs;
 import ludovico.ghergo.common.Drug;
 import ludovico.ghergo.common.Patient;
 import ludovico.ghergo.enums.PatientState;
-import ludovico.ghergo.utils.HospitalUtility;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -65,9 +63,9 @@ public enum Medicine implements Drug
             },
     UNKNOWN("#");
 
-    private String shortCode;
-    private static Map<String,Medicine> shortCodeToEnum = new HashMap<>();
-    private static final Logger LOGGER = LogManager.getLogger(Medicine.class);
+    private final String shortCode;
+    private static final Map<String,Medicine> shortCodeToEnum = new HashMap<>();
+
 
     Medicine(String _shortCode)
     {
@@ -86,20 +84,10 @@ public enum Medicine implements Drug
     {
         return  shortCodeToEnum.getOrDefault(_shortCode,UNKNOWN);
     }
-//    public PatientState applyMedicine(PatientState _patient,String _shortCode)
-//    {
-//        return  shortCodeToEnum.getOrDefault(_shortCode,UNKNOWN);
-//    }
+
 
     public String getShortCode() {
         return shortCode;
     }
 
-    public void resurrectPatient(Patient _patient)
-    {
-        LOGGER.info("The Flying Spaghetti Monster has appeared! A patient has been resurrected!");
-        _patient.setState(PatientState.HEALTHY);
-        _patient.eraseDrugHistory();
-
-    }
 }

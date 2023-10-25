@@ -1,11 +1,10 @@
 package ludovico.ghergo.utils;
 
-import ludovico.ghergo.common.patients.PhysicalPatient;
 import ludovico.ghergo.common.drugs.Medicine;
+import ludovico.ghergo.common.patients.PhysicalPatient;
 import ludovico.ghergo.enums.PatientState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class HospitalUtility
     public static ArrayList<PhysicalPatient> extractPatientList(String _patientList)
     {
         return Arrays.stream(_patientList.split(","))
-                .map(shortCode -> PatientState.getStateByShortCode(shortCode))
+                .map(PatientState::getStateByShortCode)
                 .map(PhysicalPatient::new)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
@@ -29,7 +28,7 @@ public class HospitalUtility
     public static ArrayList<Medicine> extractMedicineList(String _patientList)
     {
         return Arrays.stream(_patientList.split(","))
-                .map(shortCode -> Medicine.getMedicineByShortCode(shortCode))
+                .map(Medicine::getMedicineByShortCode)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 

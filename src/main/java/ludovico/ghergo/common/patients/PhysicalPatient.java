@@ -3,7 +3,6 @@ package ludovico.ghergo.common.patients;
 import ludovico.ghergo.common.Drug;
 import ludovico.ghergo.common.Patient;
 import ludovico.ghergo.enums.PatientState;
-import ludovico.ghergo.modules.Hospital;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +12,7 @@ public class PhysicalPatient implements Patient
 {
     private static final Logger LOGGER = LogManager.getLogger(PhysicalPatient.class);
     private PatientState state;
-    private ArrayList<Drug> history;
+    private final ArrayList<Drug> history;
 
     public PhysicalPatient(PatientState _state)
     {

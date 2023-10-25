@@ -1,7 +1,6 @@
 package ludovico.ghergo.enums;
 
 import java.util.Arrays;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +14,8 @@ public enum PatientState
     DEAD("X"),
     UNKNOWN("#");
 
-    private String shortCode;
-    private static Map<String,PatientState> shortCodeToEnum = new HashMap<>();
+    private final String shortCode;
+    private static final Map<String,PatientState> shortCodeToEnum = new HashMap<>();
 
     PatientState(String _short)
     {
